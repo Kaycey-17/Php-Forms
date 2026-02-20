@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Prevent direct access
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['error'] = "Invalid access. Please submit the form properly.";
     header("Location: Index.php");
@@ -12,7 +11,6 @@ $username = trim($_POST['username']);
 $jobtitle = trim($_POST['jobtitle']);
 $language = trim($_POST['language']);
 
-// Validate fields
 if (empty($_POST['username'])) {
     $_SESSION['error'] = "Username is required.";
     header("Location: Index.php");
@@ -37,7 +35,6 @@ if (empty($_POST['language'])) {
     exit();
 }
 
-// Secure input
 $username = htmlspecialchars($_POST['username']);
 $jobtitle = htmlspecialchars($_POST['jobtitle']);
 $language = htmlspecialchars($_POST['language']);
